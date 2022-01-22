@@ -1,0 +1,47 @@
+<div class='menu center'>
+    {% for item in site.data.nav %}
+        {% assign isselected = false %}
+        {% if item.link and page.url == item.link %}
+            {% assign isselected = true %}
+        {% endif %}
+        {% if isselected == false and item.drop %}
+            {% for drop in item.drop %}
+                {% if page.url == drop.link %}
+                    {% assign isselected = true %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if item.drop %}
+            <div class='dropdown-container'>
+        {% endif %}
+
+        <div class='menu-item {% if isselected == true %}selected{% endif %}'
+            {% if item.link %}
+                {% if page.url == item.link %}
+                    onclick="window.scrollTo(0, 0)"
+                {% else %}
+                    onclick="location.href='{{ site.baseurl }}{{ item.link }}'"
+                {% endif %}
+            {% endif %}
+            onselectstart='return false'
+        >{{ item.name }}</div>
+
+        {% if item.drop %}
+            <div class='dropdown-content' style='width: {{ item.dropw }}'>
+            {% for drop in item.drop %}
+                <div class='dropdown-item {% if page.url == drop.link %}selected{% endif %}'
+                    {% if page.url == drop.link %}
+                        onclick="window.scrollTo(0, 0)"
+                    {% else %}
+                        onclick="location.href='{{ site.baseurl }}{{ drop.link }}'"
+                    {% endif %}
+                    onselectstart='return false'
+                >{{ drop.name }}</div>
+            {% endfor %}
+            </div>
+
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>

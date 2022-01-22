@@ -1,0 +1,9 @@
+- name: Home
+  link: /
+- name: Resources
+  dropw: 150px
+  drop:
+    - name: Publications
+      link: /publications.html
+- name: Contact
+  link: /contact.html

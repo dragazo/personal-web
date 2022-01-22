@@ -1,0 +1,28 @@
+{% capture myslideshowid %}slideshow{% increment slideshowcount %}{% endcapture %}
+<div id='{{ myslideshowid }}' class='slideshow' style='height: {{ include.height }}'>
+    {% for entry in site.data[include.src] %}
+        {% if entry.link %}
+        <a href='{{ entry.link }}' target='_blank'>
+        {% endif %}
+        <div class='slideshow-content fade'>
+            <img src='{{ entry.img }}' class='slideshow-img'>
+            {% if entry.desc %}
+            <div class='slideshow-desc-box center'>
+                <div class='slideshow-desc'>{{entry.desc}}</div>
+            </div>
+            {% endif %}
+        </div>
+        {% if entry.link %}
+        </a>
+        {% endif %}
+    {% endfor %}
+
+    <div class='slideshow-dot-container center' onselectstart='return false'>
+    {% for entry in site.data[include.src] %}
+        <div class='slideshow-dot' onclick="setSlideshowSlide('{{ myslideshowid }}', {{ forloop.index | minus:1 }})"></div>
+    {% endfor %}
+    </div>
+
+    <div class='slideshow-prev' onclick="slideshowPrev('{{ myslideshowid }}')" onselectstart='return false'>&#10094;</div>
+    <div class='slideshow-next' onclick="slideshowNext('{{ myslideshowid }}')" onselectstart='return false'>&#10095;</div>
+</div>

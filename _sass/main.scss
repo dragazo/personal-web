@@ -1,0 +1,267 @@
+/* default style overrides */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #7e95b9;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+}
+p {
+    margin-bottom: 30px;
+    line-height: 30px;
+}
+td {
+    padding: 0 10px 10px 10px;
+}
+td:first-child {
+    padding-left: 0;
+}
+td:last-child {
+    padding-right: 0;
+}
+th {
+    padding-bottom: 10px;
+}
+li:not(:last-child) {
+    padding-bottom: 10px;
+}
+table, ul, ol {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+ul {
+    display: table;
+}
+p, ul, ol {
+    text-align: justify;
+}
+
+/* core content layout */
+
+.title {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+.menu-item {
+    display: inline-block;
+    padding: 5px 15px 5px 15px;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 60px;
+}
+.dropdown-container:hover .menu-item {
+    border-radius: 10px 10px 0 0;
+}
+.menu-item.selected, .dropdown-item.selected {
+    background-color: #b3b3b3;
+}
+.menu-item:hover, .dropdown-container:hover .menu-item, .dropdown-item:hover {
+    background-color: #969696;
+}
+.menu, .content, .holo-content {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.menu, .dropdown-content {
+    background-color: #d1d1d1;
+}
+.menu {
+    position: -webkit-sticky; /* safari */
+    position: sticky;
+    top: 0;
+    padding: 10px 0 10px 0;
+    z-index: 1000;
+}
+.content, .holo-content {
+    margin-bottom: 15px;
+    padding: 30px 5% 30px 5%;
+}
+.holo-content {
+    color: #e2e2e2;
+}
+.content, .bottom-bar {
+    background-color: #ececec;
+}
+.bottom-bar {
+    height: 50px;
+}
+
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 10000;
+    text-align: left;
+}
+.dropdown-item {
+    display: block;
+    padding: 5px 15px 5px 15px;
+    cursor: pointer;
+}
+.dropdown-container:hover .dropdown-content {
+    display: block;
+}
+
+/* custom items/controls */
+
+.button, .vibrant-button {
+    display: inline-block;
+    padding: 10px 25px 10px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.button {
+    border: 1px solid #363636;
+}
+.button:hover {
+    background-color: #d1d1d1;
+}
+.vibrant-button {
+    background-color: #1c84ca;
+    color: white;
+}
+.vibrant-button:hover {
+    background-color: #2193df;
+}
+
+.colorbar {
+    display: block;
+    width: 75%;
+    min-width: 150px;
+    height: 3px;
+    margin: 20px auto 30px auto;
+    background-color: rgb(43, 47, 49);
+    background-image: linear-gradient(90deg, rgb(255, 0, 25), rgb(106, 52, 255), rgb(0, 153, 255));
+}
+
+.container {
+    position: relative;
+}
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.slideshow {
+    position: relative;
+    background-color: black;
+    width: 100%;
+    height: 600px;
+}
+.slideshow-content {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+.slideshow-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slideshow-dot-container {
+    position: absolute;
+    bottom: 2px;
+    width: 100%;
+}
+.slideshow-dot {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.slideshow-dot.selected {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.slideshow-desc-box {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 0 10px 0;
+}
+.slideshow-desc {
+    display: inline-block;
+    width: 75%;
+    font-size: 18px;
+    color: white;
+}
+.slideshow-prev, .slideshow-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.slideshow-next {
+    right: 0;
+}
+.slideshow-next:hover, .slideshow-prev:hover {
+    background-color: rgba(0, 0, 0, 0.8)
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@-webkit-keyframes fade {
+    from { opacity: 0.4 }
+    to { opacity: 1 }
+}
+@keyframes fade {
+    from { opacity: 0.4 }
+    to { opacity: 1 }
+}
+
+/* style utils */
+
+.center { text-align: center; }
+.mcenter { margin-left: auto; margin-right: auto; }
+.right { text-align: right; }
+.uppercase { text-transform: uppercase; }
+.iblock { display: inline-block; }
+.block { display: block; }
+.vibrant { color: white; }
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
+.round { border-radius: 50%; }
+.rounded { border-radius: 50px; }
+.padded { padding: 7px; }
+.bordered { border: 1px solid rgb(75, 75, 75); }
+.darkhalo { box-shadow: 0 0 8px 8px rgb(180, 180, 180); }
+.top-spaced { margin-top: 60px; }
+.clickable { cursor: pointer; }
+
+/* layout utils */
+
+.hflex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.flex-item {
+    flex: 1;
+    margin: 10px;
+    padding: 15px;
+}
+.two-column {
+    min-width: 400px;
+}
