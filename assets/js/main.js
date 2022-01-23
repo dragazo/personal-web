@@ -49,4 +49,13 @@ window.addEventListener('load', () => {
             if (!timerId) timerId = setTimeout(animator, SLIDESHOW_TIME);
         });
     }
+    for (const container of document.getElementsByClassName('counter-container')) {
+        const items = container.getElementsByClassName('counter-value');
+        const reversed = container.classList.contains('reversed');
+        const mapper = reversed ? i => items.length - i : i => i + 1;
+
+        for (let i = 0; i < items.length; ++i) {
+            items[i].textContent = `${mapper(i)}`;
+        }
+    }
 });
